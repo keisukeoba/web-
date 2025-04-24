@@ -1,0 +1,367 @@
+@font-face {
+    font-family: "CraftMincho";
+    src: url("../fonts/craftmincho.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 共通リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "CraftMincho", sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+/* ナビゲーション */
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: white;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+.intro-title {
+    font-family: "CraftMincho", serif;
+}
+
+/* セクション共通 */
+main section {
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    border-bottom: 1px solid #eee;
+}
+
+.main-visual {
+    background: linear-gradient(to bottom, #fbeee0, #ffffff);
+    text-align: center;
+    padding-top: 25vh;
+    padding-bottom: 5rem;
+}
+
+.main-visual h2 {
+    font-size: 8rem; /* ← ここを大きくする */
+    line-height: 1.2;
+    font-weight: bold;
+    color: #d62828;
+    letter-spacing: 0.05em;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* セクションごとの背景 */
+.rule-section {
+    background-color: #fefae0;
+    
+}
+
+.yaku-section {
+    background-color: #e0f7fa;
+}
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 5rem 0rem;
+    
+}
+
+.feature-btn {
+    width: 607.5px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+.feature-btn:hover {
+    transform: scale(1.05);
+}
+
+.feature-btn span {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
+/* ボタン */
+.toggle-btn {
+    background-image: url(../img/ダウンロード.jpg);
+    border: 1px solid #ccc;
+    padding: 70px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 0.5rem;
+}
+
+.toggle-btn:hover {
+    background-color: #ddd;
+}
+
+/* 詳細ブロック */
+.detail {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-left: 4px solid #999;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* テキスト + 画像 横並び */
+.yaku-detail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.yaku-text {
+    flex: 1;
+    font-size: 1rem;
+    color: #800000;
+    min-width: 200px;
+}
+
+.miryoku-text {
+    flex: 1;
+    font-size: 1.5rem;
+    color: #800000;
+    min-width: 200px;
+}
+
+.yaku-img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* フッター */
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem 1rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.sns {
+    margin-top: 0.5rem;
+}
+
+.sns a {
+    color: white;
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+/* プロのところ */
+.pro-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.pro-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.pro-card:hover {
+    transform: translateY(-5px);
+}
+
+.pro-img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eee;
+}
+
+.pro-info {
+    padding: 1rem;
+}
+
+.pro-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.pro-info p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.intro-section {
+    height: 100vh;
+    width: 100%;
+    background: #000;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-title {
+    font-size: 4rem;
+    font-weight: bold;
+    z-index: 2;
+    animation: fadeIn 2s ease-out;
+}
+
+.enter-btn {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.enter-btn:hover {
+    background-color: #f2f2f2;
+    transform: scale(1.05);
+}
+
+.mahjong-tiles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background: url("img/tiles.gif") repeat center center;
+    opacity: 0.15;
+    animation: scrollTiles 60s linear infinite;
+}
+
+@keyframes scrollTiles {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 1000px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* フェードアウト演出 */
+.intro-section.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+}
+
+#particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}

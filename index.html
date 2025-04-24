@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MJスクールトップページ</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link href="https://fonts.cdnfonts.com/css/anegreya" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">MJスクール</div>
+            <nav>
+                <a href="#top">トップ</a>
+                <a href="#rule">ルール</a>
+                <a href="#pro">プロ</a>
+            </nav>
+        </header>
+        <main>
+            <section id="intro" class="intro-section">
+                <canvas id="particles-canvas"></canvas>
+
+                <h1 class="intro-title">麻雀の世界</h1>
+                <div class="mahjong-tiles"></div>
+                <button id="enterButton" class="enter-btn">扉を開く</button>
+            </section>
+
+            <audio id="bgm" src="music/bgm.mp3" loop></audio>
+
+            <section id="top" class="main-visual">
+                <h2 class="fade-in">麻雀は<br />おもしろい</h2>
+            </section>
+
+            <section id="miryoku" class="rule-section">
+                <h3 class="fade-in">麻雀の魅力</h3>
+                <div class="items">
+                    <div class="items">
+                        <button
+                            class="feature-btn"
+                            data-target="detail-un"
+                            style="background-image: url('img/un.jpg')"
+                        >
+                            <span>運</span>
+                        </button>
+                        <button
+                            class="feature-btn"
+                            data-target="detail-senryaku"
+                            style="background-image: url('img/strategy.jpg')"
+                        >
+                            <span>戦略</span>
+                        </button>
+                        <button
+                            class="feature-btn"
+                            data-target="detail-comm"
+                            style="background-image: url('img/comm.jpg')"
+                        >
+                            <span>コミュニケーション</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="detail" id="detail-un">
+                    <div class="yaku-detail">
+                        <div class="miryoku-text">
+                            【麻雀における運の役割】<br />麻雀は運要素が強いが、運を活かす判断力や守備力などの実力も重要。
+                        </div>
+                        <video
+                            src="img/運.mov"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            controls
+                            class="yaku-img"
+                        ></video>
+                    </div>
+                </div>
+                <div class="detail" id="detail-senryaku">
+                    <div class="yaku-detail">
+                        <div class="miryoku-text">
+                            【麻雀における戦略性】<br />手作り、点数計算、相手の読みなど多様な判断が必要で、高い戦略性が求められる。
+                        </div>
+                        <video
+                            src="img/戦略.mov"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            controls
+                            class="yaku-img"
+                        ></video>
+                    </div>
+                </div>
+                <div class="detail" id="detail-comm">
+                    <div class="yaku-detail">
+                        <div class="miryoku-text">
+                            【麻雀におけるコミュニケーション】<br />会話なしでも相手の意図を読む必要があり、非言語的な高度なコミュニケーションが求められる。
+                        </div>
+                        <video
+                            src="img/コミュニケーション.mov"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            controls
+                            class="yaku-img"
+                        ></video>
+                    </div>
+                </div>
+            </section>
+
+            <section id="yaku" class="yaku-section">
+                <h3 class="fade-in">役紹介</h3>
+                <div class="items">
+                    <button class="toggle-btn" data-target="detail-riichi">
+                        リーチ
+                    </button>
+                    <button class="toggle-btn" data-target="detail-tanyao">
+                        タンヤオ
+                    </button>
+                    <button class="toggle-btn" data-target="detail-pinfu">
+                        ピンフ
+                    </button>
+                </div>
+                <div class="detail" id="detail-riichi">
+                    <div class="yaku-detail">
+                        <div class="yaku-text">
+                            門前で聴牌し、リーチ宣言で成立する基本役。
+                        </div>
+                        <img
+                            src="img/リーチ.png"
+                            alt="リーチの例"
+                            class="yaku-img"
+                        />
+                    </div>
+                </div>
+                <div class="detail" id="detail-tanyao">
+                    <div class="yaku-detail">
+                        <div class="yaku-text">
+                            1,9字牌を使わず、2～8の数牌だけで作る役。
+                        </div>
+                        <img
+                            src="img/タンヤオ.png"
+                            alt="タンヤオの例"
+                            class="yaku-img"
+                        />
+                    </div>
+                </div>
+                <div class="detail" id="detail-pinfu">
+                    <div class="yaku-detail">
+                        <div class="yaku-text">
+                            順子構成で、役牌を使わないリャンメン待ちの役。
+                        </div>
+                        <img
+                            src="img/ピンフ.png"
+                            alt="ピンフの例"
+                            class="yaku-img"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            <section id="pro" class="pro-section">
+                <h4 class="fade-in">プロ紹介</h4>
+                <p class="fade-in">
+                    麻雀プロリーグ「Mリーグ」で活躍する選手たちを紹介します。
+                </p>
+
+                <div class="pro-cards">
+                    <div class="pro-card fade-in">
+                        <img
+                            src="img/ぽよ.png"
+                            alt="プロ雀士A"
+                            class="pro-img"
+                        />
+                        <div class="pro-info">
+                            <h4>堀　慎吾</h4>
+                            <p>
+                                堀慎吾は新潟県出身のプロ雀士で、Mリーグ・KADOKAWAサクラナイツ所属。冷静な戦略と鋭い読みを武器に、攻守のバランスに優れた打ち筋を展開する。勝負所では大胆に攻めきる強さも持っている。別名「小さな巨人」
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pro-card fade-in">
+                        <img
+                            src="img/ディエゴ.png"
+                            alt="プロ雀士B"
+                            class="pro-img"
+                        />
+                        <div class="pro-info">
+                            <h4>醍醐　大</h4>
+                            <p>
+                                醍醐大は千葉県出身のプロ雀士で、Mリーグ・セガサミーフェニックス所属。緻密な読みと独創的な打牌で、アガリ率を高めつつ放銃を抑えるスタイル。24-25シーズンには逆転トップでMVPを獲得し、存在感を示した。別名「先切り十段」
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pro-card fade-in">
+                        <img
+                            src="img/ゴリラ.png"
+                            alt="プロ雀士C"
+                            class="pro-img"
+                        />
+                        <div class="pro-info">
+                            <h4>瑞原　明奈</h4>
+                            <p>
+                                瑞原明奈は長崎出身の女流プロ雀士で、Mリーグ・U-NEXT
+                                Pirates所属。論理と大胆さを融合させた「ゴリラ麻雀」が持ち味で、高成績を残す実力派。過去にMVPも獲っている。別名「気高き女海賊」
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div>&copy; MJスクール</div>
+            <div class="sns">
+                <a href="#">X</a>
+                <a href="#">Instagram</a>
+            </div>
+        </footer>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
