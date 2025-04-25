@@ -30,132 +30,87 @@
             <section id="top" class="main-visual">
                 <h2 class="fade-in">麻雀は<br />おもしろい</h2>
             </section>
-
+            <!-- 麻雀の魅力セクション 全画面3分割ボタン -->
             <section id="miryoku" class="rule-section">
                 <h3 class="fade-in">麻雀の魅力</h3>
-                <div class="items">
-                    <div class="items">
-                        <button
-                            class="feature-btn"
-                            data-target="detail-un"
-                            style="background-image: url('img/un.jpg')"
-                        >
-                            <span>運</span>
-                        </button>
-                        <button
-                            class="feature-btn"
-                            data-target="detail-senryaku"
-                            style="background-image: url('img/strategy.jpg')"
-                        >
-                            <span>戦略</span>
-                        </button>
-                        <button
-                            class="feature-btn"
-                            data-target="detail-comm"
-                            style="background-image: url('img/comm.jpg')"
-                        >
-                            <span>コミュニケーション</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="detail" id="detail-un">
-                    <div class="yaku-detail">
-                        <div class="miryoku-text">
-                            【麻雀における運の役割】<br />麻雀は運要素が強いが、運を活かす判断力や守備力などの実力も重要。
-                        </div>
-                        <video
-                            src="img/運.mov"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                            controls
-                            class="yaku-img"
-                        ></video>
-                    </div>
-                </div>
-                <div class="detail" id="detail-senryaku">
-                    <div class="yaku-detail">
-                        <div class="miryoku-text">
-                            【麻雀における戦略性】<br />手作り、点数計算、相手の読みなど多様な判断が必要で、高い戦略性が求められる。
-                        </div>
-                        <video
-                            src="img/戦略.mov"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                            controls
-                            class="yaku-img"
-                        ></video>
-                    </div>
-                </div>
-                <div class="detail" id="detail-comm">
-                    <div class="yaku-detail">
-                        <div class="miryoku-text">
-                            【麻雀におけるコミュニケーション】<br />会話なしでも相手の意図を読む必要があり、非言語的な高度なコミュニケーションが求められる。
-                        </div>
-                        <video
-                            src="img/コミュニケーション.mov"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                            controls
-                            class="yaku-img"
-                        ></video>
-                    </div>
-                </div>
-            </section>
 
-            <section id="yaku" class="yaku-section">
-                <h3 class="fade-in">役紹介</h3>
-                <div class="items">
-                    <button class="toggle-btn" data-target="detail-riichi">
-                        リーチ
-                    </button>
-                    <button class="toggle-btn" data-target="detail-tanyao">
-                        タンヤオ
-                    </button>
-                    <button class="toggle-btn" data-target="detail-pinfu">
-                        ピンフ
-                    </button>
-                </div>
-                <div class="detail" id="detail-riichi">
-                    <div class="yaku-detail">
-                        <div class="yaku-text">
-                            門前で聴牌し、リーチ宣言で成立する基本役。
+                <!-- 詳細表示を先に配置して、上に出す -->
+                <div id="miryoku-details">
+                    <div class="detail" id="detail-un">
+                        <div class="yaku-detail">
+                            <div class="miryoku-text">
+                                【麻雀における運の役割】<br />麻雀は運要素が強いが、運を活かす判断力や守備力などの実力も重要。
+                            </div>
+                            <video
+                                src="img/運.mov"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                controls
+                                class="yaku-img"
+                            ></video>
                         </div>
-                        <img
-                            src="img/リーチ.png"
-                            alt="リーチの例"
-                            class="yaku-img"
-                        />
+                    </div>
+
+                    <div class="detail" id="detail-senryaku">
+                        <div class="yaku-detail">
+                            <div class="miryoku-text">
+                                【麻雀における戦略性】<br />手作り、点数計算、相手の読みなど多様な判断が必要で、高い戦略性が求められる。
+                            </div>
+                            <video
+                                src="img/戦略.mov"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                controls
+                                class="yaku-img"
+                            ></video>
+                        </div>
+                    </div>
+
+                    <div class="detail" id="detail-comm">
+                        <div class="yaku-detail">
+                            <div class="miryoku-text">
+                                【麻雀におけるコミュニケーション】<br />会話なしでも相手の意図を読む必要があり、非言語的な高度なコミュニケーションが求められる。
+                            </div>
+                            <video
+                                src="img/コミュニケーション.mov"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                controls
+                                class="yaku-img"
+                            ></video>
+                        </div>
                     </div>
                 </div>
-                <div class="detail" id="detail-tanyao">
-                    <div class="yaku-detail">
-                        <div class="yaku-text">
-                            1,9字牌を使わず、2～8の数牌だけで作る役。
-                        </div>
-                        <img
-                            src="img/タンヤオ.png"
-                            alt="タンヤオの例"
-                            class="yaku-img"
-                        />
-                    </div>
-                </div>
-                <div class="detail" id="detail-pinfu">
-                    <div class="yaku-detail">
-                        <div class="yaku-text">
-                            順子構成で、役牌を使わないリャンメン待ちの役。
-                        </div>
-                        <img
-                            src="img/ピンフ.png"
-                            alt="ピンフの例"
-                            class="yaku-img"
-                        />
-                    </div>
+
+                <!-- 画面幅を使った横3分割ボタン -->
+                <div class="feature-grid">
+                    <button
+                        class="feature-block"
+                        data-target="detail-un"
+                        style="background-image: url('img/un.jpg')"
+                    >
+                        <span>運</span>
+                    </button>
+                    <button
+                        class="feature-block"
+                        data-target="detail-senryaku"
+                        style="background-image: url('img/strategy.jpg')"
+                    >
+                        <span>戦略</span>
+                    </button>
+                    <button
+                        class="feature-block"
+                        data-target="detail-comm"
+                        style="background-image: url('img/comm.jpg')"
+                    >
+                        <span>コミュニケーション</span>
+                    </button>
                 </div>
             </section>
 

@@ -1,35 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".toggle-btn");
+    // -------------------------
+    // 1. 詳細を切り替える（.feature-block / .toggle-btn 両方対応）
+    // -------------------------
+    const buttons = document.querySelectorAll(
+        ".toggle-btn, .feature-btn, .feature-block"
+    );
 
     buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
             const targetId = btn.getAttribute("data-target");
             const detail = document.getElementById(targetId);
-            if (detail.style.display === "block") {
-                detail.style.display = "none";
-            } else {
-                detail.style.display = "block";
-            }
+
+            document.querySelectorAll(".detail").forEach((d) => {
+                if (d !== detail) d.style.display = "none";
+            });
+
+            detail.style.display =
+                detail.style.display === "block" ? "none" : "block";
         });
     });
-});
-document.addEventListener("DOMContentLoaded", () => {
-    const faders = document.querySelectorAll(".fade-in");
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        },
-        { threshold: 0.1 }
-    );
-
-    faders.forEach((el) => observer.observe(el));
-});
-document.addEventListener("DOMContentLoaded", () => {
+    // -------------------------
+    // 2. フェードイン表示（.fade-in要素）
+    // -------------------------
     const faders = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(
@@ -48,61 +41,65 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     faders.forEach((el) => observer.observe(el));
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+    // -------------------------
+    // 3. introセクションからトップへ移動＆bgm
+    // -------------------------
     const intro = document.getElementById("intro");
-    const button = document.getElementById("enterButton");
+    const enterButton = document.getElementById("enterButton");
     const bgm = document.getElementById("bgm");
 
-    button.addEventListener("click", () => {
-        bgm.play();
+    if (intro && enterButton) {
+        enterButton.addEventListener("click", () => {
+            bgm.play();
+            document
+                .getElementById("top")
+                .scrollIntoView({ behavior: "smooth" });
+            intro.classList.add("fade-out");
+            setTimeout(() => {
+                intro.style.display = "none";
+            }, 5000);
+        });
+    }
 
-        // トップへスムーススクロール
-        document.getElementById("top").scrollIntoView({ behavior: "smooth" });
+    // -------------------------
+    // 4. 背景のパーティクルアニメーション
+    // -------------------------
+    const canvas = document.getElementById("particles-canvas");
+    if (canvas) {
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        // フェードアウト開始
-        intro.classList.add("fade-out");
-
-        // 完全に消すのは2秒後
-        setTimeout(() => {
-            intro.style.display = "none";
-        }, 5000);
-    });
-});
-
-const canvas = document.getElementById("particles-canvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const particles = [];
-for (let i = 0; i < 100; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: Math.random() * 0.5 + 0.5,
-    });
-}
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((p) => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-
-        // 下に抜けたら上から再スタート
-        if (p.y > canvas.height) {
-            p.y = -p.radius;
-            p.x = Math.random() * canvas.width;
+        const particles = [];
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                dx: (Math.random() - 0.5) * 0.5,
+                dy: Math.random() * 0.5 + 0.5,
+            });
         }
-    });
-    requestAnimationFrame(draw);
-}
-draw();
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p) => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+                ctx.fill();
+                p.x += p.dx;
+                p.y += p.dy;
+
+                if (p.y > canvas.height) {
+                    p.y = -p.radius;
+                    p.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    }
+});
