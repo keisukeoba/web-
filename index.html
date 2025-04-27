@@ -28,7 +28,7 @@
             <audio id="bgm" src="music/bgm.mp3" loop></audio>
 
             <section id="top" class="main-visual">
-                <h2 class="fade-in">麻雀は<br />おもしろい</h2>
+                <h2 class="fade-in" class="main-title">麻雀は<br />おもしろい</h2>
             </section>
             <!-- 麻雀の魅力セクション 全画面3分割ボタン -->
             <section id="miryoku" class="rule-section">
@@ -114,55 +114,129 @@
                 </div>
             </section>
 
+            <!-- プロ紹介セクション：カーディナル型＋左右矢印ナビ付き -->
             <section id="pro" class="pro-section">
                 <h4 class="fade-in">プロ紹介</h4>
-                <p class="fade-in">
-                    麻雀プロリーグ「Mリーグ」で活躍する選手たちを紹介します。
-                </p>
 
-                <div class="pro-cards">
-                    <div class="pro-card fade-in">
-                        <img
-                            src="img/ぽよ.png"
-                            alt="プロ雀士A"
-                            class="pro-img"
-                        />
-                        <div class="pro-info">
-                            <h4>堀　慎吾</h4>
-                            <p>
-                                堀慎吾は新潟県出身のプロ雀士で、Mリーグ・KADOKAWAサクラナイツ所属。冷静な戦略と鋭い読みを武器に、攻守のバランスに優れた打ち筋を展開する。勝負所では大胆に攻めきる強さも持っている。別名「小さな巨人」
-                            </p>
+                <div class="carousel-wrapper">
+                    <button id="prev" class="nav">＜</button>
+
+                    <div class="carousel-track">
+                        <!-- プロカード：ここにカードをどんどん追加してね -->
+                        <div class="card">
+                            <img
+                                src="img/ぽよ.png"
+                                alt="プロ雀士1"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>堀　慎吾</h4>
+                                <p>
+                                    堀慎吾は新潟県出身のプロ雀士で、Mリーグ・KADOKAWAサクラナイツ所属。冷静な戦略と鋭い読みを武器に、攻守のバランスに優れた打ち筋を展開する。勝負所では大胆に攻めきる強さも持っている。別名「小さな巨人」
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pro-card fade-in">
-                        <img
-                            src="img/ディエゴ.png"
-                            alt="プロ雀士B"
-                            class="pro-img"
-                        />
-                        <div class="pro-info">
-                            <h4>醍醐　大</h4>
-                            <p>
-                                醍醐大は千葉県出身のプロ雀士で、Mリーグ・セガサミーフェニックス所属。緻密な読みと独創的な打牌で、アガリ率を高めつつ放銃を抑えるスタイル。24-25シーズンには逆転トップでMVPを獲得し、存在感を示した。別名「先切り十段」
-                            </p>
+                        <div class="card">
+                            <img
+                                src="img/ディエゴ.png"
+                                alt="プロ雀士2"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>醍醐　大</h4>
+                                <p>
+                                    醍醐大は千葉県出身のプロ雀士で、Mリーグ・セガサミーフェニックス所属。緻密な読みと独創的な打牌で、アガリ率を高めつつ放銃を抑えるスタイル。24-25シーズンには逆転トップでMVPを獲得し、存在感を示した。別名「先切り十段」
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="pro-card fade-in">
-                        <img
-                            src="img/ゴリラ.png"
-                            alt="プロ雀士C"
-                            class="pro-img"
-                        />
-                        <div class="pro-info">
-                            <h4>瑞原　明奈</h4>
-                            <p>
-                                瑞原明奈は長崎出身の女流プロ雀士で、Mリーグ・U-NEXT
-                                Pirates所属。論理と大胆さを融合させた「ゴリラ麻雀」が持ち味で、高成績を残す実力派。過去にMVPも獲っている。別名「気高き女海賊」
-                            </p>
+                        <div class="card">
+                            <img
+                                src="img/ゴリラ.png"
+                                alt="プロ雀士3"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>瑞原　明奈</h4>
+                                <p>
+                                    瑞原明奈は長崎出身の女流プロ雀士で、Mリーグ・U-NEXT
+                                    Pirates所属。論理と大胆さを融合させた「ゴリラ麻雀」が持ち味で、高成績を残す実力派。過去にMVPも獲っている。別名「気高き女海賊」
+                                </p>
+                            </div>
                         </div>
+                        <div class="card">
+                            <img
+                                src="img/あきさん.png"
+                                alt="プロ雀士4"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>二階堂　亜樹</h4>
+                                <p>二階堂亜樹は神奈川県出身のプロ雀士で、Mリーグ・EX風林火山に所属。冷静な判断と大胆な打牌を武器に、数々の名勝負を演じるトップ女流プロとして活躍している。別名「卓上の舞姫」</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img
+                                src="img/北陸の貴公子.png"
+                                alt="プロ雀士5"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>本田　朋広</h4>
+                                <p>本田朋広は富山県出身のプロ雀士で、Mリーグ・TEAM RAIDEN/雷電に所属。2023年には独創的な七対子で倍満8000オールをツモ上がり、着実な実績と攻撃的な打ち筋で存在感を示している。別名「役満プリンス」</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img
+                                src="img/ないおとん.png"
+                                alt="プロ雀士6"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>渡辺　太</h4>
+                                <p>渡辺太は東大卒の現役医師であり、Mリーグ・赤坂ドリブンズに所属するプロ雀士。ネット麻雀の頂点からMリーグでも圧倒的な勝負強さを見せ、短期間でトップクラスの存在感を放っている。別名「麻雀シンギュラリティ」</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img
+                                src="img/麻雀星人.png"
+                                alt="プロ雀士7"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>多井　隆晴</h4>
+                                <p>多井隆晴は東京都出身のプロ雀士で、RMU代表として麻雀界を牽引しつつ、Mリーグ・渋谷ABEMASの主力選手として数々のタイトルと実績を誇るカリスマ的存在である。別名「最速最強」</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img
+                                src="img/魔王.png"
+                                alt="プロ雀士8"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>佐々木　寿人</h4>
+                                <p>佐々木寿人は宮城県出身のプロ雀士で、Mリーグ・KONAMI麻雀格闘倶楽部に所属。攻撃的な打ち筋で知られ、Mリーグ初の国士無双や最高スコア記録など、数々の名場面を生み出してきた。別名「魔王」</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img
+                                src="img/ブルドーザー.png"
+                                alt="プロ雀士9"
+                                class="pro-img"
+                            />
+                            <div class="pro-info">
+                                <h4>鈴木　大介</h4>
+                                <p>鈴木大介はMリーグ・BEAST Xに所属するプロ雀士で、最高スコア記録や大三元和了を達成し、安定した成績と勝負強さを兼ね備えた実力派として活躍している。別名「二刀流ブルドーザー」
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 以下コピペして6人以上増やしてOK！ -->
                     </div>
+
+                    <button id="next" class="nav">＞</button>
                 </div>
-            </section>
         </main>
 
         <footer>

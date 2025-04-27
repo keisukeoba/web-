@@ -1,7 +1,7 @@
+// ✅ 【整理版】script.js
+
 document.addEventListener("DOMContentLoaded", () => {
-    // -------------------------
-    // 1. 詳細を切り替える（.feature-block / .toggle-btn 両方対応）
-    // -------------------------
+    // --- 1. 詳細切り替え ---
     const buttons = document.querySelectorAll(
         ".toggle-btn, .feature-btn, .feature-block"
     );
@@ -20,9 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // -------------------------
-    // 2. フェードイン表示（.fade-in要素）
-    // -------------------------
+    // --- 2. フェードイン表示（.fade-in） ---
     const faders = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(
@@ -42,9 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     faders.forEach((el) => observer.observe(el));
 
-    // -------------------------
-    // 3. introセクションからトップへ移動＆bgm
-    // -------------------------
+    // --- 3. intro演出＆bgm ---
     const intro = document.getElementById("intro");
     const enterButton = document.getElementById("enterButton");
     const bgm = document.getElementById("bgm");
@@ -62,9 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // -------------------------
-    // 4. 背景のパーティクルアニメーション
-    // -------------------------
+    // --- 4. パーティクル背景 ---
     const canvas = document.getElementById("particles-canvas");
     if (canvas) {
         const ctx = canvas.getContext("2d");
@@ -101,5 +95,92 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         draw();
+    }
+
+    // --- 5. プロ紹介カルーセル ---
+    let currentIndex = 1; // 最初2枚目中央
+    const track = document.querySelector(".carousel-track");
+    const cards = document.querySelectorAll(".card");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    const firstClone = cards[0].cloneNode(true);
+    const lastClone = cards[cards.length - 1].cloneNode(true);
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, cards[0]);
+
+    const allCards = document.querySelectorAll(".card");
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${(currentIndex - 1) * 33.333}%)`;
+        allCards.forEach((card) => card.classList.remove("active"));
+        allCards[currentIndex].classList.add("active");
+    }
+
+    function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= allCards.length - 1) {
+            setTimeout(() => {
+                track.style.transition = "none";
+                currentIndex = 1;
+                updateCarousel();
+                setTimeout(() => {
+                    track.style.transition = "transform 0.5s ease";
+                }, 50);
+            }, 500);
+        }
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex--;
+        if (currentIndex <= 0) {
+            setTimeout(() => {
+                track.style.transition = "none";
+                currentIndex = allCards.length - 2;
+                updateCarousel();
+                setTimeout(() => {
+                    track.style.transition = "transform 0.5s ease";
+                }, 50);
+            }, 500);
+        }
+        updateCarousel();
+    }
+
+    let autoSlide = setInterval(nextSlide, 4000);
+
+    prevBtn.addEventListener("click", () => {
+        prevSlide();
+        clearInterval(autoSlide);
+    });
+
+    nextBtn.addEventListener("click", () => {
+        nextSlide();
+        clearInterval(autoSlide);
+    });
+
+    track.addEventListener("click", () => {
+        clearInterval(autoSlide);
+    });
+
+    updateCarousel();
+
+    // --- 6. タイトル一文字ずつフェードアップ ---
+    const title = document.querySelector(".main-title");
+    if (title) {
+        const text = title.textContent.trim();
+        title.textContent = "";
+
+        text.split("").forEach((char, index) => {
+            const span = document.createElement("span");
+            span.textContent = char;
+            span.style.animationDelay = `${index * 0.1}s`;
+            title.appendChild(span);
+        });
+
+        const totalTime = text.length * 0.1 + 1.5;
+        setTimeout(() => {
+            document.body.style.overflow = "auto";
+        }, totalTime * 1000);
     }
 });
