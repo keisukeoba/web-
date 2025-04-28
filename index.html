@@ -17,6 +17,8 @@
             </nav>
         </header>
         <main>
+            <button id="muteButton" class="mute-btn">🔊</button>
+
             <section id="intro" class="intro-section">
                 <canvas id="particles-canvas"></canvas>
 
@@ -42,7 +44,7 @@
                                 【麻雀における運の役割】<br />麻雀は運要素が強いが、運を活かす判断力や守備力などの実力も重要。
                             </div>
                             <video
-                                src="img/運.mov"
+                                src="img/un.mp4"
                                 autoplay
                                 muted
                                 loop
@@ -59,7 +61,7 @@
                                 【麻雀における戦略性】<br />手作り、点数計算、相手の読みなど多様な判断が必要で、高い戦略性が求められる。
                             </div>
                             <video
-                                src="img/戦略.mov"
+                                src="img/senryaku.mp4"
                                 autoplay
                                 muted
                                 loop
@@ -76,7 +78,7 @@
                                 【麻雀におけるコミュニケーション】<br />会話なしでも相手の意図を読む必要があり、非言語的な高度なコミュニケーションが求められる。
                             </div>
                             <video
-                                src="img/コミュニケーション.mov"
+                                src="img/comm.mp4"
                                 autoplay
                                 muted
                                 loop
@@ -113,6 +115,60 @@
                     </button>
                 </div>
             </section>
+
+            <!-- ルールセクション -->
+<section id="rule" class="rule-page">
+    <h3 class="fade-in">牌の種類</h3>
+    <div class="tile-types">
+        <div class="tile fade-in">
+            <img src="img/manzu.png" alt="萬子" />
+                <p>萬子（マンズ）</p>
+        </div>
+        <div class="tile fade-in">
+            <img src="img/pinzu.png" alt="筒子" />
+                <p>筒子（ピンズ）</p>
+        </div>
+        <div class="tile fade-in">
+            <img src="img/souzu.png" alt="索子" />
+                <p>索子（ソウズ）</p>
+        </div>
+        <div class="tile fade-in">
+        <img src="img/jihai.png" alt="字牌" />
+        <p>字牌（ジハイ）</p>
+        </div>
+    </div>
+
+<div class="basic-yaku">
+    <button class="yaku-btn" data-target="yaku-riichi">リーチ</button>
+    <button class="yaku-btn" data-target="yaku-tanyao">タンヤオ</button>
+    <button class="yaku-btn" data-target="yaku-pinfu">ピンフ</button>
+</div>
+
+<div id="yaku-riichi" class="yaku-detail">
+    <img src="img/リーチ.png" alt="リーチ">
+        <p>リーチ：門前で聴牌してリーチ宣言する役</p>
+</div>
+
+<div id="yaku-tanyao" class="yaku-detail">
+    <img src="img/タンヤオ.png" alt="タンヤオ">
+        <p>タンヤオ：2〜8の数牌だけで手を作る役</p>
+</div>
+
+<div id="yaku-pinfu" class="yaku-detail">
+    <img src="img/ピンフ.png" alt="ピンフ">
+        <p>ピンフ：順子だけでリャンメン待ちを作る役</p>
+</div>
+
+    <h3 class="fade-in">アガリ条件</h3>
+    <div class="win-conditions fade-in">
+        <ul>
+            <li>基本的に4つの面子（順子または刻子）＋1つの雀頭（対子）を作る()</li>
+            <li>ロン（他人の捨て牌で和了）またはツモ（自分で引いて和了）</li>
+            <li>役が1つ以上必要（リーチ、タンヤオなど）</li>
+        </ul>
+    </div>
+</section>
+
 
             <!-- プロ紹介セクション：カーディナル型＋左右矢印ナビ付き -->
             <section id="pro" class="pro-section">

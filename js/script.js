@@ -1,9 +1,9 @@
-// ✅ 【整理版】script.js
+// ✅ 最終修正版 script.js（動画再生完全対応版）
 
 document.addEventListener("DOMContentLoaded", () => {
-    // --- 1. 詳細切り替え ---
+    // --- 1. 詳細切り替え＆動画再生制御 ---
     const buttons = document.querySelectorAll(
-        ".toggle-btn, .feature-btn, .feature-block"
+        ".toggle-btn, .feature-btn, .feature-block, .yaku-btn"
     );
 
     buttons.forEach((btn) => {
@@ -11,18 +11,36 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetId = btn.getAttribute("data-target");
             const detail = document.getElementById(targetId);
 
-            document.querySelectorAll(".detail").forEach((d) => {
-                if (d !== detail) d.style.display = "none";
+            document.querySelectorAll(".detail, .yaku-detail").forEach((d) => {
+                if (d !== detail) {
+                    d.style.display = "none";
+                    const otherVideo = d.querySelector("video");
+                    if (otherVideo) {
+                        otherVideo.pause();
+                        otherVideo.currentTime = 0;
+                    }
+                }
             });
 
-            detail.style.display =
-                detail.style.display === "block" ? "none" : "block";
+            if (detail.style.display === "block") {
+                detail.style.display = "none";
+                const thisVideo = detail.querySelector("video");
+                if (thisVideo) {
+                    thisVideo.pause();
+                }
+            } else {
+                detail.style.display = "block";
+                const thisVideo = detail.querySelector("video");
+                if (thisVideo) {
+                    thisVideo.currentTime = 0;
+                    thisVideo.play();
+                }
+            }
         });
     });
 
     // --- 2. フェードイン表示（.fade-in） ---
     const faders = document.querySelectorAll(".fade-in");
-
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
@@ -37,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
             threshold: 0.2,
         }
     );
-
     faders.forEach((el) => observer.observe(el));
 
     // --- 3. intro演出＆bgm ---
@@ -93,12 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             requestAnimationFrame(draw);
         }
-
         draw();
     }
 
     // --- 5. プロ紹介カルーセル ---
-    let currentIndex = 1; // 最初2枚目中央
+    let currentIndex = 1;
     const track = document.querySelector(".carousel-track");
     const cards = document.querySelectorAll(".card");
     const prevBtn = document.getElementById("prev");
@@ -182,5 +198,19 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             document.body.style.overflow = "auto";
         }, totalTime * 1000);
+    }
+
+    // --- 7. ミュートボタン（左上固定） ---
+    const muteBtn = document.getElementById("muteButton");
+    if (muteBtn && bgm) {
+        muteBtn.addEventListener("click", () => {
+            if (bgm.muted) {
+                bgm.muted = false;
+                muteBtn.textContent = "🔊";
+            } else {
+                bgm.muted = true;
+                muteBtn.textContent = "🔇";
+            }
+        });
     }
 });
