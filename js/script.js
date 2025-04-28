@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetId = btn.getAttribute("data-target");
             const detail = document.getElementById(targetId);
 
-            document.querySelectorAll(".detail, .yaku-detail").forEach((d) => {
+            document.querySelectorAll(".detail").forEach((d) => {
                 if (d !== detail) {
                     d.style.display = "none";
                     const otherVideo = d.querySelector("video");
