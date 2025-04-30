@@ -1,25 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
     // --- 初期状態で全ての詳細を非表示 ---
-    // --- 初期状態で全ての詳細を非表示 ---
-// .detail クラスを持つ全要素 + ボタンの data-target にあるID の要素を対象にする
-const allTargets = new Set();
-[...document.querySelectorAll(".toggle-btn, .feature-btn, .feature-block, .yaku-btn")].forEach(btn => {
-    const targetId = btn.getAttribute("data-target");
-    if (targetId) {
-        const el = document.getElementById(targetId);
-        if (el) allTargets.add(el);
-    }
-});
+    const allTargets = new Set();
+    [...document.querySelectorAll(".toggle-btn, .feature-btn, .feature-block, .yaku-btn")].forEach(btn => {
+        const targetId = btn.getAttribute("data-target");
+        if (targetId) {
+            const el = document.getElementById(targetId);
+            if (el) allTargets.add(el);
+        }
+    });
 
-// 非表示にする
-allTargets.forEach(el => {
-    el.style.display = "none";
-    const vid = el.querySelector("video");
-    if (vid) {
-        vid.pause();
-        vid.currentTime = 0;
-    }
-});
+    allTargets.forEach(el => {
+        el.style.display = "none";
+        const vid = el.querySelector("video");
+        if (vid) {
+            vid.pause();
+            vid.currentTime = 0;
+        }
+    });
 
     document.querySelectorAll(".detail").forEach(d => {
         d.style.display = "none";
@@ -30,11 +27,10 @@ allTargets.forEach(el => {
         }
     });
 
-    // --- 1. 詳細切り替え＆動画再生制御 ---
-    const toggleBtns     = document.querySelectorAll(".toggle-btn");
-    const featureBtns    = document.querySelectorAll(".feature-btn");
-    const featureBlocks  = document.querySelectorAll(".feature-block");
-    const yakuBtns       = document.querySelectorAll(".yaku-btn");
+    const toggleBtns    = document.querySelectorAll(".toggle-btn");
+    const featureBtns   = document.querySelectorAll(".feature-btn");
+    const featureBlocks = document.querySelectorAll(".feature-block");
+    const yakuBtns      = document.querySelectorAll(".yaku-btn");
 
     const detailButtons = [
         ...toggleBtns,
@@ -48,7 +44,6 @@ allTargets.forEach(el => {
             const targetId = btn.getAttribute("data-target");
             const detail   = document.getElementById(targetId);
 
-            // 他の詳細を閉じ、動画を停止＆リセット
             document.querySelectorAll(".detail").forEach(d => {
                 if (d !== detail) {
                     d.style.display = "none";
@@ -60,7 +55,6 @@ allTargets.forEach(el => {
                 }
             });
 
-            // 押下した要素の表示切替＆動画制御
             if (detail.style.display === "block") {
                 detail.style.display = "none";
                 const thisVid = detail.querySelector("video");
@@ -76,7 +70,7 @@ allTargets.forEach(el => {
         });
     });
 
-    // --- 2. フェードイン表示（.fade-in） ---
+    // --- フェードイン ---
     const faders = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -86,21 +80,29 @@ allTargets.forEach(el => {
     }, { threshold: 0.2 });
     faders.forEach(el => observer.observe(el));
 
-    // --- 3. intro演出＆bgm ---
-    const intro       = document.getElementById("intro");
+    // --- intro演出＆BGM＆ヘッダー表示 ---
+    const intro = document.getElementById("intro");
     const enterButton = document.getElementById("enterButton");
-    const bgm         = document.getElementById("bgm");
+    const bgm = document.getElementById("bgm");
+    const header = document.querySelector("header");
 
     if (intro && enterButton) {
         enterButton.addEventListener("click", () => {
             bgm.play();
             document.getElementById("top").scrollIntoView({ behavior: "smooth" });
             intro.classList.add("fade-out");
-            setTimeout(() => { intro.style.display = "none"; }, 5000);
+
+            if (window.innerWidth <= 768 && header) {
+                header.classList.add("active");
+            }
+
+            setTimeout(() => {
+                intro.style.display = "none";
+            }, 5000);
         });
     }
 
-    // --- 4. パーティクル背景 ---
+    // --- パーティクル背景 ---
     const canvas = document.getElementById("particles-canvas");
     if (canvas) {
         const ctx = canvas.getContext("2d");
@@ -110,11 +112,11 @@ allTargets.forEach(el => {
         const particles = [];
         for (let i = 0; i < 100; i++) {
             particles.push({
-                x      : Math.random() * canvas.width,
-                y      : Math.random() * canvas.height,
-                radius : Math.random() * 2 + 1,
-                dx     : (Math.random() - 0.5) * 0.5,
-                dy     : Math.random() * 0.5 + 0.5,
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                dx: (Math.random() - 0.5) * 0.5,
+                dy: Math.random() * 0.5 + 0.5,
             });
         }
 
@@ -138,7 +140,7 @@ allTargets.forEach(el => {
         draw();
     }
 
-    // --- 5. プロ紹介カルーセル ---
+    // --- プロ紹介カルーセル ---
     let currentIndex = 1;
     const track   = document.querySelector(".carousel-track");
     const cards   = document.querySelectorAll(".card");
@@ -152,7 +154,15 @@ allTargets.forEach(el => {
     const allCards = document.querySelectorAll(".card");
 
     function updateCarousel() {
-        track.style.transform = `translateX(-${(currentIndex - 1) * 33.333}%)`;
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            const cardWidth = allCards[0].offsetWidth;
+            track.style.transform = `translateX(-${(currentIndex - 1) * cardWidth}px)`;
+        } else {
+            track.style.transform = `translateX(-${(currentIndex - 1) * 33.333}%)`;
+        }
+
         allCards.forEach(card => card.classList.remove("active"));
         allCards[currentIndex].classList.add("active");
     }
@@ -189,7 +199,7 @@ allTargets.forEach(el => {
     track.addEventListener("click", () => clearInterval(autoSlide));
     updateCarousel();
 
-    // --- 6. タイトル一文字ずつフェードアップ ---
+    // --- タイトルフェードアップ ---
     const title = document.querySelector(".main-title");
     if (title) {
         const text = title.textContent.trim();
@@ -204,7 +214,7 @@ allTargets.forEach(el => {
         setTimeout(() => { document.body.style.overflow = "auto"; }, totalTime * 1000);
     }
 
-    // --- 7. ミュートボタン（左上固定） ---
+    // --- ミュートボタン ---
     const muteBtn = document.getElementById("muteButton");
     if (muteBtn && bgm) {
         muteBtn.addEventListener("click", () => {
