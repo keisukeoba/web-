@@ -20,7 +20,7 @@ body {
     font-family: "CraftMincho", sans-serif;
     background-color: #fff;
     color: #333;
-    padding-top: 70px;
+    padding-top: 68px;
 }
 
 /* --- ナビゲーション --- */
@@ -34,14 +34,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     z-index: 9999;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
 header .logo {
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 3rem;
 }
 
 nav a {
