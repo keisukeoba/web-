@@ -223,3 +223,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+const header = document.querySelector("header");
+const intro = document.getElementById("intro");
+const enterButton = document.getElementById("enterButton");
+
+if (intro && enterButton) {
+    enterButton.addEventListener("click", () => {
+        // スクロールとアニメーション
+        document.getElementById("top").scrollIntoView({ behavior: "smooth" });
+        intro.classList.add("fade-out");
+
+        // 🔥 ヘッダーを表示（スマホ・PC両対応）
+        if (header) {
+            header.classList.add("active");
+        }
+
+        // フェードアウト終了後に非表示
+        setTimeout(() => {
+            intro.style.display = "none";
+        }, 5000);
+    });
+}
